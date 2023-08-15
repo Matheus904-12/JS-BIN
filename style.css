@@ -10,20 +10,28 @@ body {
 }
 
 .container {
+    display: flex;
+    flex-direction: row;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow: hidden;
+    width: 800px;
+}
+
+.cadastro-box {
+    flex: 1;
     padding: 30px;
-    width: 400px;
     text-align: center;
 }
 
-h1 {
+.cadastro-box h1 {
     color: #333;
     margin-bottom: 20px;
 }
 
-input {
+.cadastro-box input {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
@@ -31,8 +39,7 @@ input {
     border-radius: 5px;
 }
 
-button {
-    display: block;
+.cadastro-box button {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -44,16 +51,29 @@ button {
     transition: background-color 0.3s;
 }
 
-button:hover {
+.cadastro-box button:hover {
     background-color: #0056b3;
 }
 
-button:last-child {
+.cadastro-box button:last-child {
     background-color: #dc3545;
 }
 
-button:last-child:hover {
+.cadastro-box button:last-child:hover {
     background-color: #c82333;
+}
+
+.registros-box {
+    flex: 1;
+    background-color: #f2f2f2;
+    padding: 30px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.registros-box h2 {
+    color: #333;
+    margin-bottom: 20px;
 }
 
 .livros-box {
@@ -61,6 +81,8 @@ button:last-child:hover {
     padding: 10px;
     margin-top: 20px;
     border-radius: 5px;
+    overflow-y: auto;
+    max-height: 300px;
 }
 
 .livro {
@@ -89,4 +111,47 @@ button:last-child:hover {
 
 .livro button:hover {
     background-color: #0056b3;
+}
+
+.notification-carousel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.notification {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    display: none;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 5px;
+    z-index: 2;
+}
+
+.carrossel-box {
+    flex: 1;
+    position: relative; /* Adiciona uma posição relativa para que o carrossel possa ser posicionado dentro da div */
+    overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse as dimensões da div */
+}
+
+.carrossel {
+    display: flex; /* Permite que as capas dos livros fiquem em linha */
+    transition: transform 0.5s; /* Adiciona uma transição suave para a animação do carrossel */
+}
+
+.capa {
+    flex: 0 0 100%; /* Define o tamanho das capas para ocupar todo o espaço do carrossel */
+    height: 100%; /* Garante que a altura seja a mesma do carrossel */
+    background-size: cover; /* Redimensiona a imagem para preencher todo o espaço */
+    background-position: center; /* Centraliza a imagem dentro da div */
+    opacity: 0; /* Inicialmente, as capas estarão invisíveis */
+    transition: opacity 0.5s; /* Adiciona uma transição suave para a animação de aparecimento/invisibilidade */
 }
