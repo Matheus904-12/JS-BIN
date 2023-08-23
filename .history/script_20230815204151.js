@@ -1,13 +1,15 @@
-let biblioteca = [];
-let carrosselIndex = 0;
-let notifications = [];
+   //--Inicio da caixa--//
 
-let n = 0;
-while (n < 3) {
-    n++;
-}
+   let biblioteca = [];
+   let carrosselIndex = 0;
+   let notifications = [];
 
-function cadastro(nome, autor, ano) {
+   let n = 0;
+   while (n < 3) {
+       n++;
+   }
+   
+   function cadastro(nome, autor, ano) {
     var livro = {
         nome: nome,
         autor: autor,
@@ -45,11 +47,6 @@ function mostrarLivros() {
         ano.textContent = `Ano: ${livro.ano}`;
         infoDiv.appendChild(ano);
 
-        const capaDiv = document.createElement('div');
-        capaDiv.classList.add('capa-livro');
-        capaDiv.style.backgroundImage = `url('${livro.capa}')`;
-        livroDiv.appendChild(capaDiv);
-
         const btnDiv = document.createElement('div');
         const mostrarBtn = document.createElement('button');
         mostrarBtn.textContent = 'Mostrar';
@@ -72,8 +69,6 @@ function mostrarLivros() {
 
         livrosDiv.appendChild(livroDiv);
     }
-
-    startCarousel(); // Iniciar o carrossel após atualizar os livros
 }
 
 function apagarLivros() {
@@ -127,7 +122,7 @@ function startCarousel() {
         const capaDiv = document.createElement('div');
         capaDiv.classList.add('capa');
         // Substitua 'URL_DA_CAPA_DO_LIVRO' pela URL real da capa do livro
-        capaDiv.style.backgroundImage = `url('${livro.capa}')`;
+        capaDiv.style.backgroundImage = `url('URL_DA_CAPA_DO_LIVRO')`;
 
         carrossel.appendChild(capaDiv);
     }
@@ -151,3 +146,51 @@ function showNextCarrosselItem() {
     }
 }
 
+function mostrarLivros() {
+    const livrosDiv = document.getElementById('livros');
+    livrosDiv.innerHTML = '';
+
+    for (let i = 0; i < biblioteca.length; i++) {
+        const livro = biblioteca[i];
+        const livroDiv = document.createElement('div');
+        livroDiv.classList.add('livro');
+
+        const infoDiv = document.createElement('div');
+        const nomeAutor = document.createElement('h3');
+        nomeAutor.textContent = `Nome: ${livro.nome}, Autor: ${livro.autor}`;
+        infoDiv.appendChild(nomeAutor);
+
+        const ano = document.createElement('p');
+        ano.textContent = `Ano: ${livro.ano}`;
+        infoDiv.appendChild(ano);
+
+        const capaDiv = document.createElement('div');
+        capaDiv.classList.add('capa-livro');
+        capaDiv.style.backgroundImage = `url('${livro.capa}')`;
+        livroDiv.appendChild(capaDiv);
+
+        const btnDiv = document.createElement('div');
+        const mostrarBtn = document.createElement('button');
+        mostrarBtn.textContent = 'Mostrar';
+        mostrarBtn.onclick = function () {
+            console.log(`Nome: ${livro.nome}, Autor: ${livro.autor}, Ano: ${livro.ano}`);
+        };
+        btnDiv.appendChild(mostrarBtn);
+
+        const apagarBtn = document.createElement('button');
+        apagarBtn.textContent = 'Apagar';
+        apagarBtn.onclick = function () {
+            biblioteca.splice(i, 1);
+            mostrarLivros();
+            atualizarContador();
+        };
+        btnDiv.appendChild(apagarBtn);
+
+        livroDiv.appendChild(infoDiv);
+        livroDiv.appendChild(btnDiv);
+
+        livrosDiv.appendChild(livroDiv);
+    }
+
+    startCarousel(); // Iniciar o carrossel após atualizar os livros
+}

@@ -1,13 +1,15 @@
-let biblioteca = [];
-let carrosselIndex = 0;
-let notifications = [];
+   //--Inicio da caixa--//
 
-let n = 0;
-while (n < 3) {
-    n++;
-}
+   let biblioteca = [];
+   let carrosselIndex = 0;
+   let notifications = [];
 
-function cadastro(nome, autor, ano) {
+   let n = 0;
+   while (n < 3) {
+       n++;
+   }
+   
+   function cadastro(nome, autor, ano) {
     var livro = {
         nome: nome,
         autor: autor,
@@ -45,11 +47,6 @@ function mostrarLivros() {
         ano.textContent = `Ano: ${livro.ano}`;
         infoDiv.appendChild(ano);
 
-        const capaDiv = document.createElement('div');
-        capaDiv.classList.add('capa-livro');
-        capaDiv.style.backgroundImage = `url('${livro.capa}')`;
-        livroDiv.appendChild(capaDiv);
-
         const btnDiv = document.createElement('div');
         const mostrarBtn = document.createElement('button');
         mostrarBtn.textContent = 'Mostrar';
@@ -72,8 +69,6 @@ function mostrarLivros() {
 
         livrosDiv.appendChild(livroDiv);
     }
-
-    startCarousel(); // Iniciar o carrossel após atualizar os livros
 }
 
 function apagarLivros() {
@@ -127,7 +122,7 @@ function startCarousel() {
         const capaDiv = document.createElement('div');
         capaDiv.classList.add('capa');
         // Substitua 'URL_DA_CAPA_DO_LIVRO' pela URL real da capa do livro
-        capaDiv.style.backgroundImage = `url('${livro.capa}')`;
+        capaDiv.style.backgroundImage = `url('URL_DA_CAPA_DO_LIVRO')`;
 
         carrossel.appendChild(capaDiv);
     }
@@ -150,4 +145,3 @@ function showNextCarrosselItem() {
         }, 3000); // Troca a cada 3 segundos (3000 milissegundos)
     }
 }
-

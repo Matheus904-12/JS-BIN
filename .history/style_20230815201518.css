@@ -1,0 +1,158 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow: hidden;
+    width: 800px;
+    margin: 20px;
+}
+
+.cadastro-box {
+    flex: 1;
+    padding: 30px;
+    text-align: center;
+}
+
+.cadastro-box h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.cadastro-box input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.cadastro-box button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cadastro-box button:hover {
+    background-color: #0056b3;
+}
+
+.cadastro-box button:last-child {
+    background-color: #dc3545;
+}
+
+.cadastro-box button:last-child:hover {
+    background-color: #c82333;
+}
+
+.registros-box {
+    flex: 1;
+    background-color: #f2f2f2;
+    padding: 30px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.registros-box h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.livros-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+.livro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.livro h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.livro button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.livro button:hover {
+    background-color: #0056b3;
+}
+
+.notification-carousel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.notification {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    display: none;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 5px;
+    z-index: 2;
+}
+
+.carrossel-box {
+    flex: 1;
+    position: relative; /* Adiciona uma posição relativa para que o carrossel possa ser posicionado dentro da div */
+    overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse as dimensões da div */
+}
+
+.carrossel {
+    display: flex; /* Permite que as capas dos livros fiquem em linha */
+    transition: transform 0.5s; /* Adiciona uma transição suave para a animação do carrossel */
+}
+
+.capa {
+    flex: 0 0 100%; /* Define o tamanho das capas para ocupar todo o espaço do carrossel */
+    height: 100%; /* Garante que a altura seja a mesma do carrossel */
+    background-size: cover; /* Redimensiona a imagem para preencher todo o espaço */
+    background-position: center; /* Centraliza a imagem dentro da div */
+    opacity: 0; /* Inicialmente, as capas estarão invisíveis */
+    transition: opacity 0.5s; /* Adiciona uma transição suave para a animação de aparecimento/invisibilidade */
+}
