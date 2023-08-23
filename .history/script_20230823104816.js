@@ -151,24 +151,4 @@ function showNextCarrosselItem() {
     }
 }
 
-document.getElementById('add-book').addEventListener('click', async () => {
-    const title = document.getElementById('title').value;
-    const author = document.getElementById('author').value;
-    const imageUrl = document.getElementById('imageUrl').value;
-  
-    try {
-      const response = await fetch('http://localhost:3000/add-book', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ title, author, imageUrl })
-      });
-      const result = await response.text();
-      alert(result);
-      updateCarousel();
-    } catch (error) {
-      console.error('Erro ao adicionar livro:', error);
-    }
-  });
-  
+
