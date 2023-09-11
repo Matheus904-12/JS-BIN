@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca de Livros</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="cadastro-box">
+            <h1>Cadastro de Livros</h1>
+            <input id="nomeLivro" placeholder="Nome" type="text">
+            <input id="autorLivro" placeholder="Autor" type="text">
+            <input id="anoLivro" placeholder="Ano" type="number">
+            <input id="capaLivro" placeholder="URL da Capa" type="text">
+            <button onclick="adicionar();">Adicionar Livro</button>
+            <p id="contadorLivros">Cadastre um livro</p>
+        </div>
+        <div class="registros-box">
+            <h2>Livros Adicionados</h2>
+            <div id="livros" class="livros-box"></div>
+        </div>
+    </div>
+    <div class="notification-carousel" id="notification-carousel"></div>
+    <div class="carrossel-box">
+        <div class="carrossel" id="carrossel"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

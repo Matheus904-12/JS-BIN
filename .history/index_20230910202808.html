@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Biblioteca</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="alinhar">
+        <h1 class="titulo">Cadastro de livros</h1>
+
+        <p class="titulo" id="result">Cadastre um livro</p>
+
+        <input class="container form txt" id="nomeLivro" placeholder="Nome" type="text">
+        <input class="container form txt" id="autorLivro" placeholder="Autor" type="text">
+        <input class="container form txt" id="anoLivro" placeholder="Ano" type="number">
+
+        <button class="container botao txt" id="adiciona" onclick="adicionar()">
+            Adicionar livro
+        </button>
+
+        <button class="container botao txt" id="exibir" onclick="mostrarLivros()">
+            Mostrar
+        </button>
+
+        <button class="container botao txt" id="remover" onclick="apagar()">
+            Apagar registros
+        </button>
+    </section>
+
+    <section id="detalhesFundo">
+        <div class="exibicao">
+            <section class="carrossel">
+                <img id="carrosselImagem" src="" alt="livros">
+
+                <div class="botaoCarrossel">
+                    <button class="container botao txt" id="anterior">Anterior</button>
+                    <button class="container botao txt" id="proximo">Próxima</button>
+                </div>
+            </section>
+        </div>
+
+        <section class="detalhes">
+            <h1 class="titulo" id="detalhesLivro"></h1>
+            <p class="txt" id="detalhesAutor"></p>
+            <p class="txt" id="detalhesAno"></p>
+        </section>
+    </section>
+
+
+
+    <!-- JS cadastro -->
+    <script>
+        let biblioteca = [];
+
+        function cadastro(nome, autor, ano) {
+            var livro = {
+                nome: nome,
+                autor: autor,
+                ano: ano
+            };
+            biblioteca.push(livro)
+        };
+
+        function adicionar() {
+            let nome = document.getElementById('nomeLivro').value;
+            let autor = document.getElementById('autorLivro').value;
+            let ano = document.getElementById('anoLivro').value;
+
+            cadastro(nome, autor, ano);
+
+            let quantidade = biblioteca.length;
+            document.getElementById('result').innerHTML = quantidade + " livros cadastrados."
+        };
+
+        function apagar() {
+            biblioteca.length = 0
+
+            document.getElementById('detalhesLivro').innerHTML = "";
+            document.getElementById('detalhesAutor').innerHTML = "";
+            document.getElementById('detalhesAno').innerHTML = "";
+
+            let nome = document.getElementById('nomeLivro').value = '';
+            let autor = document.getElementById('autorLivro').value = '';
+            let ano = document.getElementById('anoLivro').value = '';
+
+            document.getElementById('result').innerHTML = "Cadastre um livro"
+
+            let aparecer = document.getElementById('detalhesFundo');
+            aparecer.style.display = 'none';
+        };
+    </script>
+
+
+
+    <!-- JS carrossel -->
+    <script>
+        function mostrarLivros() {
+            for (let x of biblioteca) {
+                document.getElementById('detalhesLivro').innerHTML = x.nome
+                document.getElementById('detalhesAutor').innerHTML = x.autor
+                document.getElementById('detalhesAno').innerHTML = x.ano
+            };
+
+            let aparecer = document.getElementById('detalhesFundo');
+            aparecer.style.display = 'flex';
+        };
+
+
+        let imgIndice = 0;
+
+        const IMAGENS = ['image1.png', 'image2.png', 'image3.png', 'image4.png'];
+
+        const prevButton = document.getElementById('anterior');
+        const nextButton = document.getElementById('proximo');
+
+        var IMG = document.getElementById('carrosselImagem');
+
+        function carregar() {
+            IMG.src = IMAGENS[imgIndice];
+        };
+
+
+        prevButton.addEventListener('click', () => {
+            --imgIndice
+            carregar();
+
+            if (imgIndice < 0) {
+                imgIndice = 4;
+                --imgIndice;
+
+                carregar();
+            };
+
+            switch (imgIndice) {
+                case imgIndice = 0:
+                    document.getElementById('detalhesLivro').innerHTML = biblioteca[0].nome;
+                    document.getElementById('detalhesAutor').innerHTML = biblioteca[0].autor;
+                    document.getElementById('detalhesAno').innerHTML = biblioteca[0].ano;
+                    break;
+                case imgIndice = 1:
+                    document.getElementById('detalhesLivro').innerHTML = biblioteca[1].nome;
+                    document.getElementById('detalhesAutor').innerHTML = biblioteca[1].autor;
+                    document.getElementById('detalhesAno').innerHTML = biblioteca[1].ano;
+                    break;
+                case imgIndice = 2:
+                    document.getElementById('detalhesLivro').innerHTML = biblioteca[2].nome;
+                    document.getElementById('detalhesAutor').innerHTML = biblioteca[2].autor;
+                    document.getElementById('detalhesAno').innerHTML = biblioteca[2].ano;
+                    break;
+                case imgIndice = 3:
+                    document.getElementById('detalhesLivro').innerHTML = biblioteca[3].nome;
+                    document.getElementById('detalhesAutor').innerHTML = biblioteca[3].autor;
+                    document.getElementById('detalhesAno').innerHTML = biblioteca[3].ano;
+                    break;
+            };
+        });
+
+        nextButton.addEventListener('click', () => {
+            ++imgIndice
+            carregar();
+
+            if (imgIndice > 3) {
+                imgIndice = 1;
+                --imgIndice;
+
+                carregar();
+            };
+
+            switch (imgIndice) {
+                case imgIndice = 0:
+                    document.getElementById('detalhesLivro').innerHTML = biblioteca[0].nome;
+                    document.getElementById('detalhesAutor').innerHTML = biblioteca[0].autor;
+                    document.getElementById('detalhesAno').innerHTML = biblioteca[0].ano;
+                    break;
+                case imgIndice = 1:
+                    document.getElementById('detalhesLivro').innerHTML = biblioteca[1].nome;
+                    document.getElementById('detalhesAutor').innerHTML = biblioteca[1].autor;
+                    document.getElementById('detalhesAno').innerHTML = biblioteca[1].ano;
+                    break;
+                case imgIndice = 2:
+                    document.getElementById('detalhesLivro').innerHTML = biblioteca[2].nome;
+                    document.getElementById('detalhesAutor').innerHTML = biblioteca[2].autor;
+                    document.getElementById('detalhesAno').innerHTML = biblioteca[2].ano;
+                    break;
+                case imgIndice = 3:
+                    document.getElementById('detalhesLivro').innerHTML = biblioteca[3].nome;
+                    document.getElementById('detalhesAutor').innerHTML = biblioteca[3].autor;
+                    document.getElementById('detalhesAno').innerHTML = biblioteca[3].ano;
+                    break;
+            };
+        });
+        carregar();
+    </script>
+</body>
+
+</html>

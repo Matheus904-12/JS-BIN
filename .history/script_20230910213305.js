@@ -1,50 +1,44 @@
 const ESTANTE = [];
 const IMAGENS = [];
 
-function cadastrar(titulo, autor, ano) {
-    let livro = {
-        tituloLivro: titulo,
-        autorLivro: autor,
-        anoPub: ano
-    }
-    ESTANTE.push(livro);
-}
+function adicionar() {
+    let titulo = document.querySelector('#nomeLivro').value;
+    let autor = document.querySelector('#autorLivro').value;
+    let ano = document.querySelector('#anoLivro').value;
+    let imagemUrl = document.querySelector('#urlLivro').value;
 
-let addButton = document.getElementById('adicionar');
-let showButton = document.getElementById('mostrar');
-let removeButton = document.getElementById('remover');
-let prevButton = document.getElementById('ante');
-let nextButton = document.getElementById('prox');
-let indice = 0;
-let info = document.getElementById('information');
-let livrosBox = document.getElementById('livros');
+    cadastrar(titulo, autor, ano, imagemUrl);
 
-addButton.addEventListener("click", () => {
-    let titulo = document.querySelector('#nome').value;
-    let autor = document.querySelector('#autor').value;
-    let ano = document.querySelector('#ano').value;
-    cadastrar(titulo, autor, ano);
-    let imgsGuardadas = ['img/img1.png', 'img/img2.png', 'img/img3.png'];
-    IMAGENS.push(imgsGuardadas[indice]);
-    let novoLivro = document.createElement('div');
-    novoLivro.classList.add('livro');
-    novoLivro.innerHTML = `<h3>${titulo}</h3><p>Autor: ${autor}</p><p>Ano: ${ano}</p><img src="${IMAGENS[indice]}" alt="${titulo}">`;
-    livrosBox.appendChild(novoLivro);
-    ++indice;
-    info.innerHTML = `${IMAGENS.length} Livro(s) cadastrado(s)`;
+    let quantidade = biblioteca.length;
+    document.getElementById('result').innerHTML = quantidade + " livro(s) cadastrado(s).";
 
-    // Adicionando mensagem de sucesso
+    // Adiciona a imagem ao carrossel
+    let carrossel = document.getElementById('carrossel');
+    let novaImagem = document.createElement('img');
+    novaImagem.src = imagemUrl;
+    novaImagem.alt = titulo;
+    carrossel.appendChild(novaImagem);
+
+    // Limpa os campos do formulário
+    document.getElementById('nomeLivro').value = '';
+    document.getElementById('autorLivro').value = '';
+    document.getElementById('anoLivro').value = '';
+    document.getElementById('urlLivro').value = '';
+
+    // Mostra a mensagem de sucesso
     let mensagem = document.createElement('div');
     mensagem.classList.add('sucesso');
-    mensagem.innerText = 'Livro adicionado com sucesso';
+    mensagem.innerHTML = 'Livro adicionado com sucesso!';
     document.body.appendChild(mensagem);
+
     setTimeout(() => {
         mensagem.style.opacity = '0';
         setTimeout(() => {
-            mensagem.remove();
+            document.body.removeChild(mensagem);
         }, 1000);
     }, 2000);
-});
+}
+
 
 showButton.addEventListener("click", () => {
     for (let item of ESTANTE) {

@@ -107,7 +107,7 @@ body {
     outline: none;
 }
 
-.sucesso {
+.mensagem {
     position: fixed;
     bottom: 20px;
     left: 50%;

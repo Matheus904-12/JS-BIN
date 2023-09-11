@@ -17,7 +17,6 @@ let prevButton = document.getElementById('ante');
 let nextButton = document.getElementById('prox');
 let indice = 0;
 let info = document.getElementById('information');
-let livrosBox = document.getElementById('livros');
 
 addButton.addEventListener("click", () => {
     let titulo = document.querySelector('#nome').value;
@@ -26,24 +25,13 @@ addButton.addEventListener("click", () => {
     cadastrar(titulo, autor, ano);
     let imgsGuardadas = ['img/img1.png', 'img/img2.png', 'img/img3.png'];
     IMAGENS.push(imgsGuardadas[indice]);
+    let livrosBox = document.getElementById('livros');
     let novoLivro = document.createElement('div');
     novoLivro.classList.add('livro');
     novoLivro.innerHTML = `<h3>${titulo}</h3><p>Autor: ${autor}</p><p>Ano: ${ano}</p><img src="${IMAGENS[indice]}" alt="${titulo}">`;
     livrosBox.appendChild(novoLivro);
     ++indice;
     info.innerHTML = `${IMAGENS.length} Livro(s) cadastrado(s)`;
-
-    // Adicionando mensagem de sucesso
-    let mensagem = document.createElement('div');
-    mensagem.classList.add('sucesso');
-    mensagem.innerText = 'Livro adicionado com sucesso';
-    document.body.appendChild(mensagem);
-    setTimeout(() => {
-        mensagem.style.opacity = '0';
-        setTimeout(() => {
-            mensagem.remove();
-        }, 1000);
-    }, 2000);
 });
 
 showButton.addEventListener("click", () => {

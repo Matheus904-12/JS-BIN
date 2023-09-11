@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="alinhar">
+        <h1 class="titulo">Cadastro de livros</h1>
+        <p class="titulo" id="result">Cadastre um livro</p>
+        <input class="container form txt" id="nomeLivro" placeholder="Nome" type="text">
+        <input class="container form txt" id="autorLivro" placeholder="Autor" type="text">
+        <input class="container form txt" id="anoLivro" placeholder="Ano" type="number">
+        <button class="container botao txt" id="adiciona">
+            Adicionar livro
+        </button>
+        <button class="container botao txt" id="exibir">
+            Mostrar
+        </button>
+        <button class="container botao txt" id="remover">
+            Apagar registros
+        </button>
+    </section>
+
+    <section class="livros-box">
+        <div id="livros">
+            
+        </div>
+    </section>
+
+    <section id="detalhesFundo">
+        <div class="exibicao">
+            <section class="carrossel">
+                <img id="carrosselImagem" src="" alt="livros">
+                <div class="botaoCarrossel">
+                    <button class="container botao txt" id="anterior">Anterior</button>
+                    <button class="container botao txt" id="proximo">Próxima</button>
+                </div>
+            </section>
+        </div>
+        <section class="detalhes">
+            <h1 class="titulo" id="detalhesLivro"></h1>
+            <p class="txt" id="detalhesAutor"></p>
+            <p class="txt" id="detalhesAno"></p>
+        </section>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

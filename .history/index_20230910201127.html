@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Livros</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="cadastro-box">
+            <h1>Cadastro de Livros</h1>
+            <div class="input-group">
+                <label for="nomeLivro">Título do Livro</label>
+                <input id="nomeLivro" placeholder="Nome" type="text">
+            </div>
+            <div class="input-group">
+                <label for="autorLivro">Autor do Livro</label>
+                <input id="autorLivro" placeholder="Autor" type="text">
+            </div>
+            <div class="input-group">
+                <label for="anoLivro">Ano de Publicação</label>
+                <input id="anoLivro" placeholder="Ano" type="number">
+            </div>
+            <div class="input-group">
+                <label for="capaLivro">URL da Capa</label>
+                <input id="capaLivro" placeholder="URL da Capa" type="text">
+            </div>
+            <div class="btn-group">
+                <button onclick="adicionar();">Adicionar Livro</button>
+                <button onclick="mostrarLivros();">Mostrar Livros</button>
+                <button onclick="apagarLivros();">Apagar Registros</button>
+            </div>
+            <p id="contadorLivros">Cadastre um livro</p>
+        </div>
+        <div class="registros-box">
+            <h2>Livros Adicionados</h2>
+            <div id="livros" class="livros-box"></div>
+        </div>
+    </div>
+    <div class="notification-carousel" id="notification-carousel"></div>
+    <div class="carrossel-box">
+        <div class="carrossel" id="carrossel"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
